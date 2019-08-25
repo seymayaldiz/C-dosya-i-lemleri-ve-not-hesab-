@@ -1,0 +1,108 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Ogrenci{
+char isim [15];
+char soyisim [15];
+int mid1;
+int mid2;
+int final;
+	
+	
+};
+int gecmenotuhesapla(int mid1, int mid2, int final){
+	int gecmenotu;
+	gecmenotu=mid1*30/100 + mid2*30/100 + final*40/100;
+	return gecmenotu;
+}
+int ortalamahesapla(int not,int toplamkredi){
+	int sonuc;
+	if(not<=100 && not>=85){
+		not='A';
+	}
+	else if(not<85 && not>=70){
+		not='B';
+	}
+	else if(not<70 && not>=60){
+		not='C';
+	}
+	else if(not<60 && not>=50){
+		not='D';
+	}
+	else {
+		not='F';
+	}
+	
+	switch(not){
+	 case 'A' :
+	 sonuc=3*4/toplamkredi;
+	 return sonuc;
+	 	
+		
+	
+	
+	
+	 case 'B' :
+	 sonuc=3*4/toplamkredi;
+	 return sonuc;
+	 	
+		
+	
+	
+	 case 'C' :
+	 sonuc=2*4/toplamkredi;
+	 return sonuc;
+	
+	
+	 case 'D' :
+	 sonuc=1*4/toplamkredi;
+	 return sonuc;
+	 	
+		
+	
+	
+	 case 'F' :
+	 sonuc=0;
+	 return sonuc;
+	 	
+		
+	}
+	
+	
+}
+int main(int argc, char *argv[]) {
+	int not;
+	int sonuc;
+	int derssayisi;
+	int toplamkredi;
+	FILE *hedefdosya=fopen("Students.txt","r+");
+	FILE *hedefdosya2=fopen("Grades.txt","w+");
+	struct Ogrenci ogr[5];
+	int i=0;
+	for(i;i<5;i++){
+	
+	fscanf(hedefdosya," %s",ogr[i].isim);
+	fscanf(hedefdosya," %s",ogr[i].soyisim);
+	fscanf(hedefdosya," %d",&(ogr[i].mid1));
+	fscanf(hedefdosya," %d",&(ogr[i].mid2));
+	fscanf(hedefdosya," %d",&(ogr[i].final));
+	fprintf(hedefdosya2," %s ",ogr[i].isim);
+	fprintf(hedefdosya2," %s ",ogr[i].soyisim);
+	fprintf(hedefdosya2,"%d\n",gecmenotuhesapla(ogr[i].mid1,ogr[i].mid2,ogr[i].final));}
+	
+	printf("lutfen ders sayinizi giriniz(en fazla 6 tane girebilirsiniz)...");
+	scanf("%d",&derssayisi);
+	toplamkredi=derssayisi*3;
+	int j=1;
+	for(j;j<=derssayisi;j++){
+		printf("lutfen %d. dersinizi giriniz ",j);
+		scanf("%d",&not);
+		sonuc += ortalamahesapla(not,toplamkredi);
+		
+		}
+	
+	printf("%d",sonuc);
+
+	
+	return 0;
+}
