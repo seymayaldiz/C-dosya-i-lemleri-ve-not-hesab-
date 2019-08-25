@@ -1,1 +1,1 @@
-# C-dosya-i-lemleri-ve-not-hesab-
+# C-dosya-islemleri-ve-not-hesabi-
